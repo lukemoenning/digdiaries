@@ -10,6 +10,11 @@ type LayoutProps = {
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 `;
 
@@ -17,7 +22,9 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <LayoutWrapper>
       <Navbar />
-      <div>{children}</div>
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
       <Footer />
     </LayoutWrapper>
   )
