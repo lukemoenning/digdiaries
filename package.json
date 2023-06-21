@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "post": "docker build -t lukemoenning/digdiaries . && docker run -p 3001:3001 --rm lukemoenning/digdiaries"
   },
   "dependencies": {
     "@types/node": "20.3.1",
