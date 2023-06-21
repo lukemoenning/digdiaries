@@ -17,7 +17,6 @@ const FooterLogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 200px;
-  outline: 1px solid red;
 `;
 
 const FooterLogo = styled.div`
@@ -36,7 +35,6 @@ const FooterLinks = styled.div`
   display: flex;
   align-items: center;
   width: 300px;
-  outline: 1px solid red;
 `;
 
 export default function footer() {

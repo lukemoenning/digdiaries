@@ -14,5 +14,12 @@ export const theme = {
     medium: '18px',
     large: '24px',
     xl: '30px',
-  }
-};
+  },
+  sizing: {
+    body: {
+      narrow: '600px',
+      normal: '900px',
+      wide: '1200px',
+    },
+  },
+}
