@@ -11,9 +11,11 @@ export interface blogPostData {
 export const blogPostData: blogPostData = {
   "blogPosts": [
     {
-      "title": "My first post",
+      "title": "myfirstpost",
       "body": "This is my first post",
       "imagePath": "database/blog_posts/images/my_first_post.png",
     },
   ]
 }
+
+export default blogPostData
