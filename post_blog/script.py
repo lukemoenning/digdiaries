@@ -2,14 +2,22 @@ import git
 import json
 import os
 
+# clear terminal
+os.system('clear') 
 
+
+# pull latest changes from github
 print('Pulling latest changes from GitHub...')
 repo = git.Repo('./')
 repo.remotes.origin.pull()
 
+
+# get blog input from user
 blog_title = input('Enter a title: ')
 blog_body_text = input('Enter body text: ')
 
+
+# update database files with new blog post
 print('Creating files...')
 blog_post_data_filepath = os.path.join(os.getcwd(), 'database/blog_posts/blog_post_data.tsx')
 print(blog_post_data_filepath)
@@ -24,10 +32,8 @@ json_data = file_content[start_index:end_index]
 blog_dict = json.loads(json_data)
 print(blog_dict)
 
-# f = open('./blog.txt', 'w')
-# f.write('Title: ' + blog_title + '\n')
-# f.close()
 
+# push changes to github
 # print('Pushing changes to GitHub...')
 # repo.git.add('blog.txt')
 # repo.git.commit('-m', 'added blog.txt')
