@@ -30,7 +30,6 @@ const BlogImage = styled(Image)`
 async function getBlogPostData() {
   const blogPostData = await import('../../database/blog_posts/blog_post_data')
   const parsedBlogPostData = JSON.parse(JSON.stringify(blogPostData.blogPostData))
-  console.log(parsedBlogPostData)
 
   return parsedBlogPostData
 }
@@ -38,7 +37,7 @@ async function getBlogPostData() {
 export const getStaticProps: GetStaticProps = async (context) => {
   const title = context.params?.title
   const blogPostData = await getBlogPostData()
-  console.log(blogPostData)
+
   const blogPost = blogPostData.blogPosts.find((blogPost: blogPost) => blogPost.title === title)
 
   if (!blogPost) {
@@ -100,11 +99,11 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
         </BodyText>
       </TextWrapper>
 
-      {/* <BlogImage
-        src={props.data.imagePath}
+      <BlogImage
+        src={props.data.image}
         alt='title image'
         width={300}
-      /> */}
+      />
     </BlogPostWrapper>
   )
 }

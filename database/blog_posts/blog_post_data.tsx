@@ -1,7 +1,7 @@
 export interface blogPost {
   title: string,
   body: string,
-  imagePath: string,
+  image: any,
 }
 
 export interface blogPostData {
@@ -13,7 +13,12 @@ export const blogPostData: blogPostData = {
     {
       "title": "myfirstpost",
       "body": "This is my first post",
-      "imagePath": "database/blog_posts/images/my_first_post.png",
+      "image": require("/database/blog_posts/images/my_first_post.png"),
+    },
+    {
+      "title": "blog3",
+      "body": "This is my second post",
+      "image": require("/database/blog_posts/images/blog3.png"),
     },
   ]
 }
