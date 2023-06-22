@@ -1,9 +1,19 @@
 import Image from 'next/image'
+import { GetStaticProps, GetStaticPaths  } from 'next'
+import { useRouter } from 'next/router'
+import path from 'path'
+import fs from 'fs/promises'
 import styled from 'styled-components'
 import { theme } from '../../../app/libs/theme'
 import { BodyText, HeaderText } from '../../../app/libs/common-components'
 
 import headerImage from './headerImage.png'
+
+interface blogPostProps {
+  headerText: string,
+  bodyText: string,
+  imageFilePath: string,
+}
 
 const BlogPostWrapper = styled.div`
   display: flex;
