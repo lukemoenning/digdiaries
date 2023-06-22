@@ -1,18 +1,19 @@
-import webbrowser
-import os
-# import git
+import git
+
 
 print('Pulling latest changes from GitHub...')
-# repo = git.Repo('https://github.com/lukemoenning/digdiaries')
-# origin = repo.remote(name='origin')
-# origin.pull()
-
-
-print('Opening post_blog/index.html in your browser...')
-# filename = 'file:///'+os.getcwd()+'/post_blog.html'
-# webbrowser.open_new_tab(filename)
+repo = git.Repo('./')
+repo.remotes.origin.pull()
 
 blog_title = input('Enter a title: ')
 blog_body_text = input('Enter body text: ')
 
-print(blog_title, blog_body_text)
+print('Creating files...')
+f = open('./blog.txt', 'w')
+f.write('Title: ' + blog_title + '\n')
+f.close()
+
+print('Pushing changes to GitHub...')
+repo.git.add('blog.txt')
+repo.git.commit('-m', 'added blog.txt')
+repo.git.push()
