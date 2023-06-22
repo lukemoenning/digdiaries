@@ -1,4 +1,6 @@
 import git
+import json
+import os
 
 
 print('Pulling latest changes from GitHub...')
@@ -9,11 +11,24 @@ blog_title = input('Enter a title: ')
 blog_body_text = input('Enter body text: ')
 
 print('Creating files...')
-f = open('./blog.txt', 'w')
-f.write('Title: ' + blog_title + '\n')
-f.close()
+blog_post_data_filepath = os.path.join(os.getcwd(), 'database/blog_posts/blog_post_data.tsx')
+print(blog_post_data_filepath)
+print(os.getcwd())
+first_line = 'export const blogPostData: blogPostData = {'
+end = '//matcher for python script (dont delete)'
+with open(blog_post_data_filepath, 'r') as f:
+  file_content = f.read()
+start_index = file_content.index(first_line) + len(first_line)  
+end_index = file_content.index(end)
+json_data = file_content[start_index:end_index]
+blog_dict = json.loads(json_data)
+print(blog_dict)
 
-print('Pushing changes to GitHub...')
-repo.git.add('blog.txt')
-repo.git.commit('-m', 'added blog.txt')
-repo.git.push()
+# f = open('./blog.txt', 'w')
+# f.write('Title: ' + blog_title + '\n')
+# f.close()
+
+# print('Pushing changes to GitHub...')
+# repo.git.add('blog.txt')
+# repo.git.commit('-m', 'added blog.txt')
+# repo.git.push()

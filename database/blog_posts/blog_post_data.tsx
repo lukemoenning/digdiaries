@@ -8,6 +8,7 @@ export interface blogPostData {
   blogPosts: blogPost[],
 }
 
+
 export const blogPostData: blogPostData = {
   "blogPosts": [
     {
@@ -20,7 +21,7 @@ export const blogPostData: blogPostData = {
       "body": "This is my second post",
       "image": require("/database/blog_posts/images/blog3.png"),
     },
-  ]
+  ]//matcher for python script (dont delete)
 }
 
 export default blogPostData
