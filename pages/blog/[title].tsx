@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { theme } from '../../app/libs/theme'
 import { BodyText, HeaderText } from '../../app/libs/common-components'
+import { imageLoader } from '../../app/libs/scripts'
 
 const BlogPostWrapper = styled.div`
   display: flex;
@@ -100,9 +101,12 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
       </TextWrapper>
 
       <BlogImage
+        loader={imageLoader}
         src={props.data.image}
         alt='title image'
         width={300}
+        height={200}
+        style={{objectFit: "cover", width: "auto"}}
       />
     </BlogPostWrapper>
   )

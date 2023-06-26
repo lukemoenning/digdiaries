@@ -14,12 +14,12 @@ export const blogPostData: blogPostData = {
     {
       "title": "myfirstpost",
       "body": "This is my first post",
-      "image": require("/database/blog_posts/images/my_first_post.png"),
+      "image": "/images/blog_posts/my_first_post.png",
     },
     {
       "title": "blog3",
       "body": "This is my second post",
-      "image": require("/database/blog_posts/images/blog3.png"),
+      "image": "/images/blog_posts/blog3.png",
     },
   ]//matcher for python script (dont delete)
 }
