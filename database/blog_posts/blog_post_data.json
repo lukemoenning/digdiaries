@@ -13,6 +13,34 @@
       "title": "Blog Post 3",
       "body": "This is my second post",
       "imagePath": "/images/blog_posts/blog3.png"
+    },
+    {
+      "id": "mytitlepost",
+      "createdOn": "6/26/2023",
+      "title": "My Title Post",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae aliquet justo. Phasellus posuere orci a aliquam blandit. In ut ipsum consequat, laoreet augue sodales, mattis lacus. Proin pellentesque ultrices leo, eu ultricies urna lobortis vel. Proin fermentum nisl a metus malesuada tristique et in justo. Sed maximus est et consectetur molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus, risus et iaculis tempus, neque nulla scelerisque nunc, et blandit felis sem at felis. Praesent mollis mauris a euismod faucibus. Morbi ex est, facilisis ut commodo sit amet, egestas fermentum neque.",
+      "imagePath": "/images/blog_posts/mytitlepost.png"
+    },
+    {
+      "id": "newpost17",
+      "createdOn": "6/26/2023",
+      "title": "New Post 17",
+      "body": "ensureUniqueId(blog_dict, blog_title, blog_id)",
+      "imagePath": "/images/blog_posts/newpost17.png"
+    },
+    {
+      "id": "blogposttest9",
+      "createdOn": "6/26/2023",
+      "title": "Blog Post Test 9",
+      "body": "lajslja ljlkajsl jalkj alkj lakjlajlkjasldkjalsjlkajsl",
+      "imagePath": "/images/blog_posts/blogposttest9.png"
+    },
+    {
+      "id": "testpost5",
+      "createdOn": "6/26/2023",
+      "title": "test post 5",
+      "body": "laksjl",
+      "imagePath": "/images/blog_posts/testpost5.png"
     }
   ]
 }
