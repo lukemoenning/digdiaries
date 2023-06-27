@@ -1,11 +1,21 @@
 import Image from 'next/image'
 import { GetStaticProps, GetStaticPaths  } from 'next'
-import type { blogPost } from '../../database/blog_posts/blog_post_data'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { theme } from '../../app/libs/theme'
 import { BodyText, HeaderText } from '../../app/libs/common-components'
-import { imageLoader } from '../../app/libs/scripts'
+
+export interface blogPost {
+  id: string,
+  createdOn: string,
+  title: string,
+  body: string,
+  imagePath: string,
+}
+
+export interface blogPostData {
+  blogPosts: blogPost[],
+}
 
 const BlogPostWrapper = styled.div`
   display: flex;
@@ -29,17 +39,17 @@ const BlogImage = styled(Image)`
 `;
 
 async function getBlogPostData() {
-  const blogPostData = await import('../../database/blog_posts/blog_post_data')
-  const parsedBlogPostData = JSON.parse(JSON.stringify(blogPostData.blogPostData))
+  const blogPostData = await import('../../database/blog_posts/blog_post_data.json')
+  const parsedBlogPostData = JSON.parse(JSON.stringify(blogPostData.blogPosts))
 
   return parsedBlogPostData
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const title = context.params?.title
+  const id = context.params?.id
   const blogPostData = await getBlogPostData()
 
-  const blogPost = blogPostData.blogPosts.find((blogPost: blogPost) => blogPost.title === title)
+  const blogPost = blogPostData.find((blogPost: blogPost) => blogPost.id === id)
 
   if (!blogPost) {
     return {
@@ -60,8 +70,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const blogPostData = await getBlogPostData()
-  const paths = blogPostData.blogPosts.map((blogPost: blogPost) => ({
-    params: { title: blogPost.title }
+  const paths = blogPostData.map((blogPost: blogPost) => ({
+    params: { id: blogPost.id }
   }))
 
   return {
@@ -101,12 +111,11 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
       </TextWrapper>
 
       <BlogImage
-        loader={imageLoader}
-        src={props.data.image}
+        src={props.data.imagePath}
         alt='title image'
         width={300}
-        height={200}
-        style={{objectFit: "cover", width: "auto"}}
+        height={300}
+        style={{objectFit: "cover", height: "auto"}}
       />
     </BlogPostWrapper>
   )
