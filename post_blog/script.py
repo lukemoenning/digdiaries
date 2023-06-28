@@ -13,7 +13,7 @@ os.system('clear')
 
 # pull latest changes from github
 print('Pulling latest changes from GitHub...')
-repo = git.Repo('./')
+repo = git.Repo('../')
 repo.remotes.origin.pull()
 
 
@@ -86,9 +86,9 @@ with open(blog_post_data_filepath, 'w', encoding='utf-8') as f:
 
 # push changes to github
 print('Pushing changes to GitHub...')
-# repo.git.add('--all')
-# repo.git.commit('-m', 'upload blog: ' + blog_id)
-# repo.git.push()
+repo.git.add('--all')
+repo.git.commit('-m', 'upload blog: ' + blog_id)
+repo.git.push()
 
 
 print('Successfully uploaded blog post!')
