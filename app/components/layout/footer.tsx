@@ -13,7 +13,6 @@ const FooterWrapper = styled.div`
 
 const FooterLogoWrapper = styled.div`
   display: flex;  
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 200px;
@@ -29,10 +28,12 @@ const FooterLogo = styled.div`
 const CopyRight = styled.p`
   color: ${theme.colors.black};
   font-size: ${theme.fontSize.xs};
+  padding-left: 10px;
 `;
 
 const FooterLinks = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 300px;
 `;
@@ -42,7 +43,7 @@ export default function footer() {
     <FooterWrapper>
       <FooterLogoWrapper>
         <FooterLogo />
-        <CopyRight>© 2023 by Luke Moenning</CopyRight>
+        <CopyRight>© 2023</CopyRight>
       </FooterLogoWrapper>
       <FooterLinks>
         <p>link 1</p> 

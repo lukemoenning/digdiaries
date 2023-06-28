@@ -24,7 +24,6 @@ const BlogPostWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
-  background-color: ${theme.colors.darkBrown};
 `;
 
 const TextWrapper = styled.div`

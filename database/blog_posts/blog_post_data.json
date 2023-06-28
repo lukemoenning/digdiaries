@@ -6,6 +6,13 @@
       "title": "My First Post",
       "body": "This is my first post",
       "imagePath": "/images/blog_posts/my_first_post.png"
+    },
+    {
+      "id": "colorado",
+      "createdOn": "2023-06-27T21:30:50.300648",
+      "title": "colorado",
+      "body": "sjkald",
+      "imagePath": "/images/blog_posts/colorado.png"
     }
   ]
 }

@@ -3,6 +3,7 @@ import json
 import os
 import shutil
 import tkinter as tk
+import datetime
 from tkinter import filedialog
 from PIL import Image
 
@@ -60,11 +61,10 @@ if file_path:
   image.save(new_file_path, "PNG")
     
     
-
-
 # create a new blog post from inputted data
 print('Generating a new blog post...')
-blog_created_on = "6/26/2023"
+current_date = datetime.datetime.now()
+blog_created_on = current_date.isoformat()
 
 new_blog_post = {
   "id": blog_id,
