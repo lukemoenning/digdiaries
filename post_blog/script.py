@@ -1,6 +1,10 @@
 import git
 import json
 import os
+import shutil
+import tkinter as tk
+from tkinter import filedialog
+from PIL import Image
 
 # clear terminal
 os.system('clear') 
@@ -36,6 +40,26 @@ def ensureUniqueId(blog_dict, blog_title, blog_id):
       ensureUniqueId(blog_dict, blog_title, blog_id)
 
 ensureUniqueId(blog_dict, blog_title, blog_id)
+
+
+# get the blog image from user
+input('Press enter to select an image...')
+root = tk.Tk()
+root.withdraw()
+file_path = filedialog.askopenfilename(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg", "*.heic"))])
+
+if file_path:
+  # copy image to blog post folder
+  script_dir = os.path.dirname(os.path.abspath(__file__))
+  destination_folder = os.path.join(script_dir, '../public/images/blog_posts')
+  new_file_path = os.path.join(destination_folder, blog_id + '.png')
+  shutil.copy(file_path, new_file_path)
+  
+  # convert image to PNG format
+  image = Image.open(new_file_path)
+  image.save(new_file_path, "PNG")
+    
+    
 
 
 # create a new blog post from inputted data
