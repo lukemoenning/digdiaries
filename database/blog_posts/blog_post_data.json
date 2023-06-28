@@ -1,18 +1,18 @@
 {
   "blogPosts": [
     {
-      "id": "myfirstpost",
-      "createdOn": "6/26/23",
-      "title": "My First Post",
-      "body": "This is my first post",
-      "imagePath": "/images/blog_posts/my_first_post.png"
-    },
-    {
       "id": "colorado",
       "createdOn": "2023-06-27T21:30:50.300648",
       "title": "colorado",
       "body": "sjkald",
       "imagePath": "/images/blog_posts/colorado.png"
+    },
+    {
+      "id": "myfirstpost",
+      "createdOn": "2023-06-27T21:45:41.138332",
+      "title": "My First Post",
+      "body": "this is my first blog post",
+      "imagePath": "/images/blog_posts/myfirstpost.png"
     }
   ]
 }

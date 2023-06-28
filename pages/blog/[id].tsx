@@ -2,28 +2,12 @@ import Image from 'next/image'
 import { GetStaticProps, GetStaticPaths  } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
-import { theme } from '../../app/libs/theme'
-import { BodyText, HeaderText } from '../../app/libs/common-components'
+import { NormalPageWidth, BodyText, HeaderText } from '@/app/libs/common-components'
+import { blogPost } from '@/app/libs/types'
 
-export interface blogPost {
-  id: string,
-  createdOn: string,
-  title: string,
-  body: string,
-  imagePath: string,
-}
 
-export interface blogPostData {
-  blogPosts: blogPost[],
-}
-
-const BlogPostWrapper = styled.div`
-  display: flex;
+const BlogPostWrapper = styled(NormalPageWidth)`
   flex-direction: row;
-  max-width: ${theme.sizing.body.normal};
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
 `;
 
 const TextWrapper = styled.div`
@@ -38,7 +22,7 @@ const BlogImage = styled(Image)`
 `;
 
 async function getBlogPostData() {
-  const blogPostData = await import('../../database/blog_posts/blog_post_data.json')
+  const blogPostData = await import('@/database/blog_posts/blog_post_data.json')
   const parsedBlogPostData = JSON.parse(JSON.stringify(blogPostData.blogPosts))
 
   return parsedBlogPostData
@@ -111,10 +95,9 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
 
       <BlogImage
         src={props.data.imagePath}
-        alt='title image'
+        alt={props.data.title}
         width={300}
-        height={300}
-        style={{objectFit: "cover", height: "auto"}}
+        height={250}
       />
     </BlogPostWrapper>
   )

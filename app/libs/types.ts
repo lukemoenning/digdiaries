@@ -1,7 +1,9 @@
 export interface blogPost {
+  id: string,
+  createdOn: string,
   title: string,
   body: string,
-  image: any,
+  imagePath: string,
 }
 
 export interface blogPostData {

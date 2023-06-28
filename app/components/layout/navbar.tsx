@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import styled from 'styled-components'
-import { theme } from '../../libs/theme'
+import { theme } from '@/app/libs/theme'
+import { NextLink } from '@/app/libs/common-components';
 
 const NavWrapper = styled.div` 
   display: flex;
@@ -18,10 +18,9 @@ const NavLinks = styled.div`
   align-items: center;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(NextLink)`
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.large};
-  text-decoration: none;
   margin: 30px;
 `
 

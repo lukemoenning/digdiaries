@@ -15,6 +15,11 @@ export const theme = {
     large: '24px',
     xl: '30px',
   },
+  fontWeight: {
+    light: 300,
+    normal: 400,
+    bold: 700,
+  },
   sizing: {
     body: {
       narrow: '600px',

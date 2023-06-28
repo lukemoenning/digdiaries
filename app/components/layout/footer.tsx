@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { theme } from '../../libs/theme'
+import { theme } from '@/app/libs/theme'
 
 const FooterWrapper = styled.div`
   display: flex;  
