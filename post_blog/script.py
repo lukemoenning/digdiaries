@@ -29,7 +29,15 @@ with open(blog_post_data_filepath, 'r', encoding='utf-8') as f:
 # get blog input from user
 blog_title = input('Enter a title: ')
 blog_id = ''.join(blog_title.split()).lower()
-blog_body_text = input('Enter body text: ')
+print('Enter/Paste body text. Ctrl-D or Ctrl-Z ( windows ) to save it.')
+blog_body_text = []
+while True:
+  try:
+    line = input()
+  except EOFError:
+    break
+  blog_body_text.append(line)
+blog_body_text = '\n'.join(blog_body_text)
 
 
 # validate the blog input
