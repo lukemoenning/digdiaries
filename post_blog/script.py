@@ -36,8 +36,8 @@ while True:
     line = input()
   except EOFError:
     break
-  blog_body_text.append('\t' + line)
-blog_body_text = '\n\n'.join(blog_body_text)
+  blog_body_text.append(line)
+blog_body_text = '\n'.join(blog_body_text)
 
 
 # validate the blog input
