@@ -13,7 +13,7 @@ os.system('clear')
 
 # pull latest changes from github
 print('Pulling latest changes from GitHub...')
-repo = git.Repo('../')
+repo = git.Repo(os.getcwd())
 repo.remotes.origin.pull()
 
 
