@@ -13,6 +13,13 @@
       "title": "My First Post",
       "body": "this is my first blog post",
       "imagePath": "/images/blog_posts/myfirstpost.png"
+    },
+    {
+      "id": "bedtime",
+      "createdOn": "2023-06-27T23:04:31.176058",
+      "title": "bedtime",
+      "body": "i want to go to bed",
+      "imagePath": "/images/blog_posts/bedtime.png"
     }
   ]
 }

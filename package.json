@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "post": "pip install -r post_blog/requirements.txt && python3 post_blog/script.py"
+    "post:pip": "pip install -r post_blog/requirements.txt && python3 post_blog/script.py",
+    "post": "pip3 install -r post_blog/requirements.txt && python3 post_blog/script.py"
   },
   "dependencies": {
     "@types/node": "20.3.1",
