@@ -29,15 +29,15 @@ with open(blog_post_data_filepath, 'r', encoding='utf-8') as f:
 # get blog input from user
 blog_title = input('Enter a title: ')
 blog_id = ''.join(blog_title.split()).lower()
-print('Enter/Paste body text. Ctrl-D or Ctrl-Z ( windows ) to save it.')
+print('Enter/Paste body text. Press "Enter" then "Ctrl-D" to save it.')
 blog_body_text = []
 while True:
   try:
     line = input()
   except EOFError:
     break
-  blog_body_text.append(line)
-blog_body_text = '\n'.join(blog_body_text)
+  blog_body_text.append('    ' + line)
+blog_body_text = '\n\n'.join(blog_body_text)
 
 
 # validate the blog input
@@ -55,7 +55,7 @@ ensureUniqueId(blog_dict, blog_title, blog_id)
 input('Press enter to select an image...')
 root = tk.Tk()
 root.withdraw()
-file_path = filedialog.askopenfilename(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg", "*.heic"))])
+file_path = filedialog.askopenfilename(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg"))])
 
 if file_path:
   # copy image to blog post folder
