@@ -6,6 +6,13 @@
       "title": "My First Post",
       "body": "this is my first blog post",
       "imagePath": "/images/blog_posts/myfirstpost.png"
+    },
+    {
+      "id": "packing",
+      "createdOn": "2023-06-29T14:18:25.587296",
+      "title": "Packing",
+      "body": "i am not packed yet whoops",
+      "imagePath": "/images/blog_posts/packing.png"
     }
   ]
 }
