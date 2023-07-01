@@ -15,6 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta name="viewport" content="initial-scale=1.0, width=device-width"></meta>
       <body className={inter.className}>{children}</body>
     </html>
   )

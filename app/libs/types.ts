@@ -9,3 +9,8 @@ export interface blogPost {
 export interface blogPostData {
   blogPosts: blogPost[],
 }
+
+export interface navItem {
+  name: string,
+  href: string,
+}

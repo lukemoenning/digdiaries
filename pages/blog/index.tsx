@@ -55,11 +55,10 @@ function Blog(props: {data: blogPost[], hasError: boolean}) {
     )
   }
 
-  console.log(props.data)
   return (
     <NormalPageWidth>
       <HeaderText>
-        Check out my blog posts!
+        Read some of my thoughts
       </HeaderText>
 
       <BlogPostsWrapper>

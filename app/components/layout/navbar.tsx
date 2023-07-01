@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '@/app/libs/theme'
-import { NextLink } from '@/app/libs/common-components';
+import NavLink from '@/app/components/layout/NavLink'
+import type { navItem } from '@/app/libs/types';
 
 const NavWrapper = styled.div` 
   display: flex;
@@ -8,7 +10,7 @@ const NavWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 10rem;
-  background-color: ${theme.colors.lightGreen};
+  background-color: ${theme.colors.offWhite};
 `;
 
 const NavLinks = styled.div`
@@ -18,21 +20,28 @@ const NavLinks = styled.div`
   align-items: center;
 `;
 
-const NavLink = styled(NextLink)`
-  color: ${theme.colors.white};
-  font-size: ${theme.fontSize.large};
-  margin: 30px;
-`
+const NavItems: navItem[] = [
+  {name: 'About', href: '/'},
+  {name: 'Blog', href: '/blog'},
+  {name: 'Research', href: '/research'},
+  {name: 'Gallery', href: '/gallery'},
+  {name: 'Contact', href: '/contact'},
+]
 
 export default function Navbar() { 
+  const [activeLink, setActiveLink] = useState<string>('About')
+
   return (
     <NavWrapper>
       <NavLinks>
-        <NavLink href='/'>About</NavLink>
-        <NavLink href='/blog'>Blog</NavLink>
-        <NavLink href='/research'>Research</NavLink>
-        <NavLink href='/gallery'>Gallery</NavLink>
-        <NavLink href='/contact'>Contact</NavLink>
+        {NavItems.map((item) => (
+          <NavLink 
+            {...item} 
+            key={item.name}
+            isActive={item.name === activeLink}
+            onClick={() => setActiveLink(item.name)}
+          />
+        ))}
       </NavLinks>
     </NavWrapper>
   )

@@ -38,7 +38,7 @@ const FooterLinks = styled.div`
   width: 300px;
 `;
 
-export default function footer() {
+export default function Footer() {
   return (
     <FooterWrapper>
       <FooterLogoWrapper>
