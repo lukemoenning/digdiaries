@@ -4,7 +4,7 @@ import { theme } from '@/app/libs/theme'
 import type { navItem } from '@/app/libs/types';
 
 const NavLinkWrapper = styled(Link)`
-  font-size: ${theme.fontSize.large};
+  font-size: ${theme.fontSize.lg};
   text-decoration: none;
   margin: 30px;
 `

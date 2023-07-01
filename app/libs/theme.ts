@@ -10,9 +10,9 @@ export const theme = {
   },
   fontSize: {
     xs: '10px',
-    small: '14px',
-    medium: '18px',
-    large: '24px',
+    sm: '14px',
+    md: '18px',
+    lg: '24px',
     xl: '30px',
   },
   fontWeight: {
@@ -26,5 +26,13 @@ export const theme = {
       normal: '900px',
       wide: '1200px',
     },
+    navbar: {
+      height: '100px',
+    }
+  },
+  breakpoints: {
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
   },
 }

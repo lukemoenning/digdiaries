@@ -9,16 +9,50 @@ const NavWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 10rem;
+  height: ${theme.sizing.navbar.height};
   background-color: ${theme.colors.offWhite};
-`;
+`
 
-const NavLinks = styled.div`
+const DesktopNavLinks = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: none;
+  }
+`
+
+const MobileNavLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: ${theme.sizing.navbar.height};
+  left: 0;
+  width: 100%;
+  height: calc(100vh - ${theme.sizing.navbar.height});
+  background-color: ${theme.colors.offWhite};
+  z-index: 1;
+`
+
+const MobileToggle = styled.div`
+  display: none;
+  color: ${theme.colors.lightGreen};
+  font-size: ${theme.fontSize.xl};
+  margin-left: auto;
+  margin-right: 50px;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: flex;
+  }
+`
 
 const NavItems: navItem[] = [
   {name: 'About', href: '/'},
@@ -30,10 +64,42 @@ const NavItems: navItem[] = [
 
 export default function Navbar() { 
   const [activeLink, setActiveLink] = useState<string>('About')
+  const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false)
+
+  const toggleBodyScrollLock = () => {
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.overflow = isMobileOpen ? 'auto' : 'hidden';
+    }
+  }
 
   return (
     <NavWrapper>
-      <NavLinks>
+      <MobileToggle onClick={() => {
+        setIsMobileOpen(!isMobileOpen)
+        toggleBodyScrollLock()
+      }}>
+        {isMobileOpen ? <>&#10005;</> : <>&#8801;</>}
+      </MobileToggle>
+
+      {isMobileOpen && (
+        <MobileNavLinks>
+          {NavItems.map((item) => (
+            <NavLink 
+              {...item} 
+              key={item.name}
+              isActive={item.name === activeLink}
+              onClick={() => {
+                setActiveLink(item.name)
+                setIsMobileOpen(false)
+                toggleBodyScrollLock()
+              }}
+            />
+          ))}
+        </MobileNavLinks>
+      )}
+
+      <DesktopNavLinks>
         {NavItems.map((item) => (
           <NavLink 
             {...item} 
@@ -42,7 +108,7 @@ export default function Navbar() {
             onClick={() => setActiveLink(item.name)}
           />
         ))}
-      </NavLinks>
+      </DesktopNavLinks>
     </NavWrapper>
   )
 }
