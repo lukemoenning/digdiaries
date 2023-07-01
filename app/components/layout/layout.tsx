@@ -25,7 +25,7 @@ export default function Layout({ children }: LayoutProps) {
       <ContentWrapper>
         {children}
       </ContentWrapper>
-      <Footer />
+      {/* <Footer /> */}
     </LayoutWrapper>
   )
 }
