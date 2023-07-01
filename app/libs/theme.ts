@@ -20,6 +20,13 @@ export const theme = {
     normal: 400,
     bold: 700,
   },
+  padding: {
+    xs: '5px',
+    sm: '10px',
+    md: '15px',
+    lg: '20px',
+    xl: '25px',
+  },
   sizing: {
     body: {
       narrow: '600px',

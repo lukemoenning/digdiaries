@@ -5,7 +5,7 @@ import { NextLink }from '@/app/libs/common-components'
 function InDevelopmentAlert() {
   return (
     <NormalPageWidth>
-      <BodyText style={{margin: 'auto'}}>
+      <BodyText style={{margin: 'auto', textAlign: 'center'}}>
         This page is currently in development. Check out my <NextLink style={{color: `${theme.colors.lightGreen}`, textAlign: 'center'}} href={`/blog/`}>blogs</NextLink> in the meantime!
       </BodyText>
     </NormalPageWidth>

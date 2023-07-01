@@ -5,6 +5,7 @@ import { theme } from './theme';
 export const BodyText = styled.p`
   color: ${theme.colors.black};
   font-size: ${theme.fontSize.md};
+  padding: ${theme.padding.md};
 `;
 
 export const HeaderText = styled.p`
@@ -19,7 +20,7 @@ export const NormalPageWidth = styled.div`
   max-width: ${theme.sizing.body.normal};
   width: 100%;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - ${theme.sizing.navbar.height});
 `;
 
 export const NextLink = styled(Link)`
