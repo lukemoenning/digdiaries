@@ -14,6 +14,7 @@ export const theme = {
     md: '18px',
     lg: '24px',
     xl: '30px',
+    xxl: '40px',  
   },
   fontWeight: {
     light: 300,

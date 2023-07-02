@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { theme } from '@/app/libs/theme'
 import NavLink from '@/app/components/layout/NavLink'
 import type { navItem } from '@/app/libs/types';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const NavWrapper = styled.div` 
   display: flex;
@@ -41,10 +43,25 @@ const MobileNavLinks = styled.div`
 const MobileToggle = styled.div`
   display: none;
   color: ${theme.colors.lightGreen};
-  font-size: ${theme.fontSize.xl};
+  font-size: ${theme.fontSize.xxl};
   margin-left: auto;
   margin-right: 50px;
   
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    display: flex;
+  }
+`
+
+const MobileHomeLink = styled(Link)`
+  display: none;
+  margin-left: 50px;
+  margin-right: auto;
+  text-decoration: none;
+
   &:hover {
     cursor: pointer;
   }
@@ -75,6 +92,10 @@ export default function Navbar() {
 
   return (
     <NavWrapper>
+      <MobileHomeLink href="/">
+        <Image src="/images/logo.png" alt="logo" width={40} height={40} />
+      </MobileHomeLink>
+
       <MobileToggle onClick={() => {
         setIsMobileOpen(!isMobileOpen)
         toggleBodyScrollLock()
