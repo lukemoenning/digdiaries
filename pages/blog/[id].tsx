@@ -1,25 +1,32 @@
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { GetStaticProps, GetStaticPaths  } from 'next'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { NormalPageWidth, BodyText, HeaderText } from '@/app/libs/common-components'
-import { blogPost } from '@/app/libs/types'
+import type { blogPost } from '@/app/libs/types'
+import { theme } from '@/app/libs/theme'
 
 
 const BlogPostWrapper = styled(NormalPageWidth)`
   flex-direction: row;
-`;
+  margin: 20px auto;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    flex-direction: column;
+  }
+`
 
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: auto;
   padding: 30px;
-`;
+`
 
 const BlogImage = styled(Image)`
   padding: 30px;
-`;
+`
 
 async function getBlogPostData() {
   const blogPostData = await import('@/database/blog_posts/blog_post_data.json')
@@ -65,6 +72,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 function BlogPost(props: {data: blogPost, hasError: boolean}) {
   const router = useRouter()
+  const [date, setDate] = useState<string>('')
+
+  // useEffect(() => {
+  //   if (!props.data.createdOn) {
+  //     return
+  //   }
+
+  //   const date = new Date(props.data.createdOn)
+  //   const dateString = date.toLocaleDateString('en-US', {
+  //     year: 'numeric',
+  //     month: 'long',
+  //     day: 'numeric'
+  //   })
+  //   setDate(dateString)
+  // }, [props.data.createdOn])
 
   if (props.hasError) {
     return (

@@ -9,7 +9,7 @@ const BlogPostsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 30px;
+  margin: 10px auto;
 `;
 
 async function getBlogPostData() {
@@ -57,7 +57,7 @@ function Blog(props: {data: blogPost[], hasError: boolean}) {
 
   return (
     <NormalPageWidth>
-      <HeaderText>
+      <HeaderText style={{padding: '10px'}}>
         Read some of my thoughts
       </HeaderText>
 
