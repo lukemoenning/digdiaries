@@ -90,18 +90,14 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
   }, [])
 
   useEffect(() => {
-    if (!props.data.createdOn) {
-      return
-    }
-
-    const date = new Date(props.data.createdOn)
+    const date = new Date(props?.data?.createdOn)
     const dateString = date.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     })
     setDate(dateString)
-  }, [props.data.createdOn])
+  }, [props?.data?.createdOn])
 
   if (props.hasError) {
     return (
