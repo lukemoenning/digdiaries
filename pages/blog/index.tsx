@@ -48,11 +48,13 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 function Blog(props: {data: blogPost[], hasError: boolean}) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(false);
-  }, []);
+    if (props?.data) {
+      setIsLoading(false);
+    }
+  }, [props?.data]);
 
   if (isLoading) {
     return <Loading />

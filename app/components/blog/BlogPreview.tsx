@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { blogPost } from '@/app/libs/types'
 import { theme } from '@/app/libs/theme'
 import { BodyText, HeaderText, NextLink } from '@/app/libs/common-components';
-import Blog from '@/pages/blog';
 
 
 const BlogPreivewWrapper = styled.div`
