@@ -126,7 +126,7 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
       </TextWrapper>
 
       <BlogImagesWrapper>
-        {props.data.imagePath.map((imagePath: string) => {
+        {props.data.imagePaths.map((imagePath: string) => {
           return (
             <BlogImage
               key={imagePath}
