@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { NormalPageWidth, BodyText, HeaderText } from '@/app/libs/common-components'
 import type { blogPost } from '@/app/libs/types'
 import { theme } from '@/app/libs/theme'
+import Loading from '@/app/components/Loading'
 
 
 const BlogPostWrapper = styled(NormalPageWidth)`
@@ -82,20 +83,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 function BlogPost(props: {data: blogPost, hasError: boolean}) {
   const router = useRouter()
   const [date, setDate] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   if (!props.data.createdOn) {
-  //     return
-  //   }
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
 
-  //   const date = new Date(props.data.createdOn)
-  //   const dateString = date.toLocaleDateString('en-US', {
-  //     year: 'numeric',
-  //     month: 'long',
-  //     day: 'numeric'
-  //   })
-  //   setDate(dateString)
-  // }, [props.data.createdOn])
+  useEffect(() => {
+    if (!props.data.createdOn) {
+      return
+    }
+
+    const date = new Date(props.data.createdOn)
+    const dateString = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+    setDate(dateString)
+  }, [props.data.createdOn])
 
   if (props.hasError) {
     return (
@@ -105,12 +111,8 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
     )
   }
 
-  if (router.isFallback) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    )
+  if (isLoading || router.isFallback) {
+    return <Loading />
   }
 
   return (
@@ -119,6 +121,9 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
         <HeaderText>
           {props.data.title}
         </HeaderText>
+        <BodyText style={{fontStyle: 'italic'}}>
+          {date}
+        </BodyText>
         <BodyText style={{whiteSpace: 'pre-line'}}>
           {props.data.body}
         </BodyText>

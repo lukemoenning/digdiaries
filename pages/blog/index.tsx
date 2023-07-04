@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import styled from 'styled-components'
 import { blogPost } from '@/app/libs/types'
 import { NormalPageWidth, HeaderText } from '@/app/libs/common-components'
 import BlogPreview from '@/app/components/blog/BlogPreview'
+import Loading from '@/app/components/Loading'
 
 const BlogPostsWrapper = styled.div`
   display: flex;
@@ -47,6 +48,16 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 function Blog(props: {data: blogPost[], hasError: boolean}) {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   if (props.hasError) {
     return (
       <div>
