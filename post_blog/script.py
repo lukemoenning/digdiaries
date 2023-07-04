@@ -51,23 +51,47 @@ def ensureUniqueId(blog_dict, blog_title, blog_id):
 ensureUniqueId(blog_dict, blog_title, blog_id)
 
 
+def convert_heic_to_png(file_path):
+    heif_file = pyheif.read(file_path)
+    image = Image.frombytes(
+        heif_file.mode, 
+        heif_file.size, 
+        heif_file.data,
+        "raw",
+        heif_file.mode,
+        heif_file.stride,
+    )
+    png_file_path = file_path + ".png"
+    image.save(png_file_path, "PNG")
+    return png_file_path
+
 # get the blog image from user
-input('Press enter to select an image...')
+input('Press enter to select an image or multiple images (CMD click to select multiple)...')
 root = tk.Tk()
 root.withdraw()
-file_path = filedialog.askopenfilename(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg"))])
+file_paths = filedialog.askopenfilenames(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg", "*.heic"))])
+image_path_array = []
 
-if file_path:
-  # copy image to blog post folder
+if file_paths:
   script_dir = os.path.dirname(os.path.abspath(__file__))
   destination_folder = os.path.join(script_dir, '../public/images/blog_posts')
-  new_file_path = os.path.join(destination_folder, blog_id + '.png')
-  shutil.copy(file_path, new_file_path)
+  image_path = "/images/blog_posts/" + blog_id
   
-  # convert image to PNG format
-  image = Image.open(new_file_path)
-  image.save(new_file_path, "PNG")
+  # convert images to png
+  for i, file_path in enumerate(file_paths):
+    # if file_path.endswith('.heic'):
+    #   iamge = Image.open(convert_heic_to_png(file_path))
+    # else: 
+    #   image = Image.open(file_path)
+    image = Image.open(file_path)
+    image.save(file_path+'.png')
     
+  # copy images to public folder
+  for i, file_path in enumerate(file_paths):
+    new_file_path = os.path.join(destination_folder, blog_id + '-' + str(i) + '.png')
+    shutil.copy(file_path, new_file_path)
+    image_path_array.append(image_path + '-' + str(i) + '.png')
+      
     
 # create a new blog post from inputted data
 print('Generating a new blog post...')
@@ -79,7 +103,7 @@ new_blog_post = {
   "createdOn": blog_created_on,
   "title": blog_title,
   "body": blog_body_text,
-  "imagePath": "/images/blog_posts/" + blog_id + ".png"
+  "imagePath": image_path_array
 }
 
 
