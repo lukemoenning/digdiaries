@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { theme } from '@/app/libs/theme'
 import NavLink from '@/app/components/layout/NavLink'
 import type { navItem } from '@/app/libs/types';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const NavWrapper = styled.div` 
   display: flex;
@@ -80,8 +81,20 @@ const NavItems: navItem[] = [
 ]
 
 export default function Navbar() { 
-  const [activeLink, setActiveLink] = useState<string>('About')
+  const router = useRouter()
+  const [activeLink, setActiveLink] = useState<string>('')
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false)
+
+  /**
+   * Set active link based on current route
+   */
+  useEffect(() => {
+    NavItems.forEach((item) => {
+      if (router.pathname.includes(item.href)) {
+        setActiveLink(item.name)
+      }
+    })
+  }, [router.pathname])
 
   const toggleBodyScrollLock = () => {
     const body = document.querySelector('body');

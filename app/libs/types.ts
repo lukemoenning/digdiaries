@@ -3,7 +3,7 @@ export interface blogPost {
   createdOn: string,
   title: string,
   body: string,
-  imagePath: string,
+  imagePath: [string],
 }
 
 export interface blogPostData {

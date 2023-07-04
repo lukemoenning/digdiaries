@@ -92,7 +92,7 @@ function BlogPreview(props: {blogPost: blogPost}) {
         </BlogInfoWrapper>
         
         <BlogImage
-          src={props.blogPost.imagePath}
+          src={props.blogPost.imagePath[0]}
           alt={props.blogPost.title}
           width={300}
           height={250}

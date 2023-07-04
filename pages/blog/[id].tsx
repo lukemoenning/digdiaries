@@ -24,6 +24,15 @@ const TextWrapper = styled.div`
   padding: 30px;
 `
 
+const BlogImagesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: 20px;
+`
+
 const BlogImage = styled(Image)`
   padding: 30px;
 `
@@ -110,17 +119,24 @@ function BlogPost(props: {data: blogPost, hasError: boolean}) {
         <HeaderText>
           {props.data.title}
         </HeaderText>
-        <BodyText>
+        <BodyText style={{whiteSpace: 'pre-line'}}>
           {props.data.body}
         </BodyText>
       </TextWrapper>
 
-      <BlogImage
-        src={props.data.imagePath}
-        alt={props.data.title}
-        width={300}
-        height={250}
-      />
+      <BlogImagesWrapper>
+        {props.data.imagePath.map((imagePath: string) => {
+          return (
+            <BlogImage
+              key={imagePath}
+              src={imagePath}
+              alt={props.data.title}
+              width={300}
+              height={300}
+            />
+          )}
+        )}
+      </BlogImagesWrapper>
     </BlogPostWrapper>
   )
 }
