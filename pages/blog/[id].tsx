@@ -23,6 +23,10 @@ const TextWrapper = styled.div`
   flex-direction: column;
   width: 60%;
   padding: 30px;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    width: auto;
+  }
 `
 
 const BlogImagesWrapper = styled.div`
