@@ -21,7 +21,7 @@ const BlogPostWrapper = styled(NormalPageWidth)`
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 60%;
   padding: 30px;
 `
 

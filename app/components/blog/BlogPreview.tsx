@@ -43,9 +43,10 @@ const BlogPreivewWrapper = styled.div`
 const BlogInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   height: 80%;
+  width: 40%;
 
   @media (max-width: ${theme.breakpoints.md}) {
     margin-bottom: 20px;

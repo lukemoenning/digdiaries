@@ -11,17 +11,6 @@
         "/images/blog_posts/packingandpreparations-2.png",
         "/images/blog_posts/packingandpreparations-3.png"
       ]
-    },
-    {
-      "id": "testpost",
-      "createdOn": "2023-07-03T23:39:55.898130",
-      "title": "test post",
-      "body": "this is a test post\n\nlets see if the new line works\n\nlooks like it does",
-      "imagePath": [
-        "/images/blog_posts/testpost-0.png",
-        "/images/blog_posts/testpost-1.png",
-        "/images/blog_posts/testpost-2.png"
-      ]
     }
   ]
 }

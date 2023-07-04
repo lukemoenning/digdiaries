@@ -69,7 +69,7 @@ def convert_heic_to_png(file_path):
 input('Press enter to select an image or multiple images (CMD click to select multiple)...')
 root = tk.Tk()
 root.withdraw()
-file_paths = filedialog.askopenfilenames(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg", "*.heic"))])
+file_paths = filedialog.askopenfilenames(initialdir=os.path.expanduser('~/Downloads'), filetypes=[("Image Files", ("*.png", "*.jpg", "*.jpeg"))])
 image_path_array = []
 
 if file_paths:
@@ -103,7 +103,7 @@ new_blog_post = {
   "createdOn": blog_created_on,
   "title": blog_title,
   "body": blog_body_text,
-  "imagePath": image_path_array
+  "imagePaths": image_path_array
 }
 
 
